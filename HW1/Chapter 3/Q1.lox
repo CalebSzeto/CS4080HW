@@ -1,0 +1,10 @@
+print "Hello World";
+
+var course = "CS4080";
+print "I " + "love " + course + ".";
+
+fun add(a, b) {
+  return a + b;
+}
+
+print add(2,3);
