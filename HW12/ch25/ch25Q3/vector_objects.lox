@@ -1,0 +1,30 @@
+fun createVector(a, b) {
+  fun getComponent(selector) {
+    if (selector == "x") {
+      return fun() { return a; };
+    }
+    if (selector == "y") {
+      return fun() { return b; };
+    }
+    if (selector == "add") {
+      return fun(other) {
+        var sumX = a + other("x")();
+        var sumY = b + other("y")();
+        return createVector(sumX, sumY);
+      };
+    }
+    return nil;
+  }
+  return getComponent;
+}
+
+var vector1 = createVector(2, 3);
+var vector2 = createVector(10, 20);
+var vector3 = vector1("add")(vector2);
+
+print vector1("x")();
+print vector1("y")();
+print vector2("x")();
+print vector2("y")();
+print vector3("x")();
+print vector3("y")();
